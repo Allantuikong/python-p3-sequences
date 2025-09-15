@@ -1,33 +1,19 @@
 def print_fibonacci(length):
+    # Handle edge cases
     if length == 0:
-        print("[]")
-        return
-
-    fib_sequence = [0, 1]
+        fib_sequence = []
+    elif length == 1:
+        fib_sequence = [0]
+    else:
+        # Initialize the list with the first two Fibonacci numbers
+        fib_sequence = [0, 1]
+        
+        # Generate Fibonacci numbers until we reach the desired length
+        while len(fib_sequence) < length:
+            # Add next Fibonacci number (sum of last two numbers)
+            next_number = fib_sequence[-1] + fib_sequence[-2]
+            fib_sequence.append(next_number)
     
-    if length == 1:
-        print([0])
-        return
-    
-    if length == 2:
-        print(fib_sequence)
-        return
-    
-    for i in range(2, length):
-        next_num = fib_sequence[-1] + fib_sequence[-2]
-        fib_sequence.append(next_num)
-    
+    # Print and return the sequence
     print(fib_sequence)
-
-# Test cases
-print("Length 0:")
-print_fibonacci(0)
-
-print("\nLength 1:")
-print_fibonacci(1)
-
-print("\nLength 2:")
-print_fibonacci(2)
-
-print("\nLength 10:")
-print_fibonacci(10)
+    return fib_sequence
